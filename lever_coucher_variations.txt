@@ -1,0 +1,4 @@
+Pour la ville d'Anduze (30)
+lever max az	302°
+lever min az	236°
+Ecart            66°
