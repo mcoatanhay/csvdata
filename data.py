@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
-# Fichier: coordonnees.py
+# Fichier: data.py
 # Auteur: Marc COATANHAY
 # Inspiré par le cours Python : magistère.education.fr
 
@@ -19,25 +19,26 @@ class Csv:
             nb_colonnes=0,
             liste_colonnes=[],
             nb_lignes_entete=1,
-            fichier=""):
+            fichier="",
+            sep=";",
+            type="csv"):
         if(nb_colonnes != 0):
             if fichier == "":
+                if (type == "csv"):
+                    filetype = ("Fichier CSV", "*.csv")
+                elif (type == "txt"):
+                    filetype = ("Fichier Texte", "*.txt")
                 root = Tk()
                 name = askopenfilename(
                             parent=root,
                             filetypes=(
-                                ("Fichier CSV", "*.csv"),
-                                ("Fichier Texte", "*.txt"),
+                                filetype,
                                 ("Tous les fichiers", "*.*")
                                     ),
                             title="Choisir un fichier")
                 root.destroy()
             else:
                 name = fichier
-
-            # caractère séparateur du csv -peut être une virgule,
-            # un point-virgule ou une tabulation notée \t
-            sep = ";"
 
             if(name != ""):
                 # Toutes les lignes du fichier sont récupérées dans
@@ -60,8 +61,9 @@ class Csv:
                     # le caractère séparateur défini
                     ligne = ligne.strip().split(sep)
                     # on rentre les valeurs dans les listes de valeurs utiles
-                    for i in range(nb_colonnes):
-                        self.donnees[i].append(ligne[liste_colonnes[i]])
+                    if (len(ligne) == nb_colonnes):
+                        for i in range(nb_colonnes):
+                            self.donnees[i].append(ligne[liste_colonnes[i]])
                 print("Les données sont en mémoire dans des listes python")
             else:
                 print("Aucune donnée n'a été chargée")

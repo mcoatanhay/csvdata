@@ -29,6 +29,6 @@ CLASSES
      |      list of weak references to the object (if defined)
 
 FILE
-    c:\users\mc\mu_code\_mes_modules\csvdata\data.py
+    c:\users\mc\documents\python\mes_modules\csvdata\data.py
 
 
